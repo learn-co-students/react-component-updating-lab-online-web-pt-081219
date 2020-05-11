@@ -12,10 +12,12 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log("App Component Did Mount")
     this.handleAddTimer()
   }
 
   render() {
+    console.log("App Component Render")
     console.log(this.state.timerIDs);
     return (
       <div className="App">
@@ -37,6 +39,7 @@ class App extends Component {
 
   // adds a random number for timer ID
   handleAddTimer = () => {
+    console.log("handleAddTimer (calls setState)")
     this.setState(prevState => ({
       timerIDs: [
         ...prevState.timerIDs,
@@ -50,12 +53,14 @@ class App extends Component {
 
   // removeTimer updates state, removing any timer that matches the provided author
   removeTimer = id => {
+    console.log("removeTimer (calls setState)")
     this.setState(prevState => ({
       timerIDs: prevState.timerIDs.filter(timer => timer.id !== id)
     }))
   }
 
   updateIntervalSetting = increment => {
+    console.log("updateIntervalSetting (calls setState)")
     this.setState(prevState => {
       if (prevState.updateInterval + increment <= 1) return { updateInterval: 1 }
       return {

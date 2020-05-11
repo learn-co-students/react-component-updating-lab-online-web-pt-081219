@@ -13,6 +13,7 @@ class Timer extends Component {
   //Your code here
 
   componentDidMount() {
+    console.log("Time Component Did Mount")
     this.interval = setInterval(
       this.clockTick,
       this.props.updateInterval * 1000
@@ -20,10 +21,25 @@ class Timer extends Component {
   }
 
   componentWillUnmount() {
+    console.log("Timer Component Will Unmount")
     clearInterval(this.interval);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("Timer Should Component Update")
+    if (this.state.time === nextState.time) {
+      return false
+    }
+    return true
+  }
+
+  componentDidUpdate() {
+    console.log("Timer Component Did Update")
+  }
+
+
   render() {
+    console.log("Timer Component Render")
     const { time, color, logText } = this.state;
     return (
       <section className="Timer" style={{ background: color }} ref={this.timer}>
@@ -42,6 +58,7 @@ class Timer extends Component {
   };
 
   stopClock = () => {
+    console.log(`this is stop clock ${this.interval}`)
     clearInterval(this.interval);
     this.setState({ className: "hidden" });
   };
