@@ -13,7 +13,7 @@ class Timer extends Component {
   //Your code here
 
   componentDidMount() {
-    console.log("Time Component Did Mount")
+    console.log("Timer Component Did Mount")
     this.interval = setInterval(
       this.clockTick,
       this.props.updateInterval * 1000
@@ -58,7 +58,7 @@ class Timer extends Component {
   };
 
   stopClock = () => {
-    console.log(`this is stop clock ${this.interval}`)
+    console.log(`this is stop clock ${this.interval} (calls setState)`)
     clearInterval(this.interval);
     this.setState({ className: "hidden" });
   };
